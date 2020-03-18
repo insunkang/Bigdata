@@ -11,6 +11,13 @@
 	select pro_comment from pro_comment
 	where prd_no = #{prd_no}
 	</select>
+	<select id="select2" resultType="commentResult">
+	select * from 
+	(select * from comment_result order by count desc)
+	<![CDATA[
+	where rownum <=10
+	]]>
+	</select>
 </mapper>
 
 

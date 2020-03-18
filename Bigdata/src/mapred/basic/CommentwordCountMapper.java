@@ -2,6 +2,8 @@ package mapred.basic;
 
 import java.io.IOException;
 import java.util.StringTokenizer;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.LongWritable;
@@ -29,20 +31,31 @@ public class CommentwordCountMapper
 	static final IntWritable outputVal =new IntWritable(1);
 	//output데이터의 key는 문자열이므로 Text타입으로 정의
 	Text outputKey = new Text();
+	Pattern p = Pattern.compile("은|는|이|가|요|서");
 	@Override
 	protected void map(LongWritable key, Text value, 
 			Mapper<LongWritable, Text, Text, IntWritable>.Context context)
 			throws IOException, InterruptedException {
-		//key는 linenumber ex) 1
-		//value는 입력데이터의 한 라인에 해당하는 문장 ex) read a book
-		StringTokenizer st = new StringTokenizer(value.toString());
-	
+		
+		String line = value.toString();
+		String[] data = line.split(",");
+		
+		StringTokenizer st = new StringTokenizer(data[1]);
+		StringBuffer sb = new StringBuffer();
 		while(st.hasMoreTokens()) {
 			String token = st.nextToken();
-			outputKey.set(token);//output데이터의 키를 생성
-			//context객체의 write메소드를 통해서 output으로 내보낼 데이터의 key와 value를 정의
+			Matcher m = p.matcher(token);
+			while(m.find()) {
+				m.appendReplacement(sb, "");
+			}
+			m.appendTail(sb);
+			outputKey.set(m.toString());
 			context.write(outputKey, outputVal);
 		}
+		
+		
+		
+		
 	}
 
 }

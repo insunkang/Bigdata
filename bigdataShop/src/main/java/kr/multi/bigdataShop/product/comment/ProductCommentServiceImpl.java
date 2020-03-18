@@ -24,5 +24,11 @@ public class ProductCommentServiceImpl implements ProductCommentService {
 		return dao.read(prd_no);
 	}
 
+	@Override
+	public List<CommentResultDTO> getCommentResult() {
+		
+		return dao.getCommentResultDTO();
+	}
+
 	
 }

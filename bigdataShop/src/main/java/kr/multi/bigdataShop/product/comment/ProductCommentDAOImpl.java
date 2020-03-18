@@ -23,6 +23,12 @@ public class ProductCommentDAOImpl implements ProductCommentDAO {
 		return sqlSession.selectList("kr.multi.bigdataShop.comment.select",prd_no);
 	}
 
+	@Override
+	public List<CommentResultDTO> getCommentResultDTO() {
+		
+		return sqlSession.selectList("kr.multi.bigdataShop.comment.select2");
+	}
+
 	
 
 }

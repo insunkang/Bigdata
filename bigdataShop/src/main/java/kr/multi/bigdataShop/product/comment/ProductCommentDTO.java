@@ -5,6 +5,7 @@ public class ProductCommentDTO {
 	String mem_id;
 	String pro_comment;
 	String writedate;
+	
 	public ProductCommentDTO() {
 		super();
 	}

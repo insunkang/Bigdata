@@ -152,7 +152,7 @@
 		
 
 
-      <Context docBase="bigdataShop" path="/bigdataShop" reloadable="true" source="org.eclipse.jst.jee.server:bigdataShop"/></Host>
+      <Context docBase="bigdataShop" path="/bigdataShop" reloadable="true" source="org.eclipse.jst.jee.server:bigdataShop"/><Context docBase="mongoTest" path="/mongoTest" reloadable="true" source="org.eclipse.jst.jee.server:mongoTest"/></Host>
     </Engine>
   </Service>
 </Server>

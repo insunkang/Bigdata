@@ -20,11 +20,11 @@ public class PatternAPITest {
 		}
 		//조건에 만족하지 않아도 추가할 수 있도록 구현
 		m.appendTail(sb);
-		//System.out.println(sb);
-		String[] result = sb.toString().split(" ");
+		System.out.println(sb);
+		/*String[] result = sb.toString().split(" ");
 		for (int i = 0; i < result.length; i++) {
 			System.out.println(result[i]);
-		}
+		}*/
 	}
 
 }
